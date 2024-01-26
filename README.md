@@ -1,5 +1,7 @@
 ### Hi there 👋
 
+<pre>
+```jsx
 import React, { Component } from 'react';
 
 class Denidu extends Component {
@@ -42,12 +44,14 @@ class Denidu extends Component {
 
   render() {
     return (
-      <div>
+      &lt;div&gt;
         {this.description()}
         {this.socialMedias()}
-      </div>
+      &lt;/div&gt;
     );
   }
 }
 
-export default denidu;
+export default Denidu;
+```
+</pre>
