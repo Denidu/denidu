@@ -1,3 +1,5 @@
+### Hi there 👋
+
 import React, { Component } from 'react';
 
 class Denidu extends Component {
@@ -10,40 +12,32 @@ class Denidu extends Component {
       },
       platforms: {
         LinkedIn: 'www.linkedin.com/in/denidu',
-        Instagram: '_deniiiduu_',
+        Email: 'denidugamage21@gmail.com',
       },
     };
   }
 
   description() {
-    return (
-      <div>
-        <h1>👋 Hi there, I'm Denidu Gamage!</h1>
-        <p>
-          I'm a passionate software developer with a love for coding and building cool things. Currently 23 years old and always eager to learn new technologies.
-        </p>
-        <ul>
-          <li>Name: {this.state.variables.name}</li>
-          <li>Age: {this.state.variables.age}</li>
-        </ul>
-      </div>
-    );
+    console.log('---deniduu---');
+    Object.values(this.state.variables).forEach((value, index) => {
+      switch (index) {
+        case 0:
+          console.log(`Name: ${value}`);
+          break;
+        case 1:
+          console.log(`Age: ${value}`);
+          break;
+        default:
+          break;
+      }
+    });
   }
 
   socialMedias() {
-    return (
-      <div>
-        <h2>🌐 Connect with me</h2>
-        <ul>
-          <li>
-            LinkedIn: <a href="https://www.linkedin.com/in/denidu"  target="_blank" rel="noopener noreferrer">{this.state.platforms.LinkedIn}</a>
-          </li>
-          <li>
-            Instagram: <a href="https://www.instagram.com/_deniiiduu_"  target="_blank" rel="noopener noreferrer">{this.state.platforms.Instagram}</a>
-          </li>
-        </ul>
-      </div>
-    );
+    console.log('\n-----contact-----');
+    Object.entries(this.state.platforms).forEach(([key, value]) => {
+      console.log(`${key}: ${value}`);
+    });
   }
 
   render() {
@@ -56,4 +50,4 @@ class Denidu extends Component {
   }
 }
 
-export default Denidu;
+export default denidu;
