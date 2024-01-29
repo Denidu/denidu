@@ -1,7 +1,7 @@
 ### Hi there 👋
 
 <pre>
-```jsx
+
 import React, { Component } from 'react';
 
 class Denidu extends Component {
@@ -53,5 +53,5 @@ class Denidu extends Component {
 }
 
 export default Denidu;
-```
+
 </pre>
