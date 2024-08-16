@@ -2,56 +2,54 @@
 
 <pre>
 
-import React, { Component } from 'react';
+import android.os.Bundle
+import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 
-class Denidu extends Component {
-  constructor() {
-    super();
-    this.state = {
-      variables: {
-        name: 'Denidu Gamage',
-        age: 23,
-      },
-      platforms: {
-        LinkedIn: 'www.linkedin.com/in/denidu',
-        Email: 'denidugamage21@gmail.com',
-      },
-    };
-  }
+class DeniduActivity : AppCompatActivity() {
 
-  description() {
-    console.log('---deniduu---');
-    Object.values(this.state.variables).forEach((value, index) => {
-      switch (index) {
-        case 0:
-          console.log(`Name: ${value}`);
-          break;
-        case 1:
-          console.log(`Age: ${value}`);
-          break;
-        default:
-          break;
-      }
-    });
-  }
+    private val variables = mapOf(
+        "name" to "Denidu Thiranjaya Gamage",
+        "age" to 23
+    )
 
-  socialMedias() {
-    console.log('\n-----contact-----');
-    Object.entries(this.state.platforms).forEach(([key, value]) => {
-      console.log(`${key}: ${value}`);
-    });
-  }
+    private val platforms = mapOf(
+        "LinkedIn" to "www.linkedin.com/in/denidu",
+        "Email" to "denidugamage21@gmail.com"
+    )
 
-  render() {
-    return (
-      &lt;div&gt;
-        {this.description()}
-        {this.socialMedias()}
-      &lt;/div&gt;
-    );
-  }
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_denidu)
+
+        val descriptionTextView = findViewById<TextView>(R.id.descriptionTextView)
+        val contactTextView = findViewById<TextView>(R.id.contactTextView)
+
+        descriptionTextView.text = getDescription()
+        contactTextView.text = getSocialMedias()
+    }
+
+    private fun getDescription(): String {
+        val stringBuilder = StringBuilder()
+        stringBuilder.append("---deniduu---\n")
+        variables.values.forEachIndexed { index, value ->
+            when (index) {
+                0 -> stringBuilder.append("Name: $value\n")
+                1 -> stringBuilder.append("Age: $value\n")
+            }
+        }
+        return stringBuilder.toString()
+    }
+
+    private fun getSocialMedias(): String {
+        val stringBuilder = StringBuilder()
+        stringBuilder.append("\n-----contact-----\n")
+        platforms.forEach { (key, value) ->
+            stringBuilder.append("$key: $value\n")
+        }
+        return stringBuilder.toString()
+    }
 }
 
-export default Denidu;
 
 </pre>
