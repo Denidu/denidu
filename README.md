@@ -2,52 +2,76 @@
 
 <pre>
 
-import android.os.Bundle
-import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
+import SwiftUI
 
-class DeniduActivity : AppCompatActivity() {
+struct DeniduView: View {
 
-    private val variables = mapOf(
-        "name" to "Denidu Thiranjaya Gamage",
-        "age" to 23
-    )
+    private let variables = [
+        "name": "Denidu Thiranjaya Gamage",
+        "age": 23
+    ] as [String: Any]
+    
+    private let platforms = [
+        "LinkedIn": "www.linkedin.com/in/denidu",
+        "Email": "denidugamage21@gmail.com"
+    ]
 
-    private val platforms = mapOf(
-        "LinkedIn" to "www.linkedin.com/in/denidu",
-        "Email" to "denidugamage21@gmail.com"
-    )
+    var body: some View {
+        VStack(alignment: .leading, spacing: 20) {
+            Text(getDescription())
+                .font(.headline)
+                .padding()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_denidu)
+            Divider()
 
-        val descriptionTextView = findViewById<TextView>(R.id.descriptionTextView)
-        val contactTextView = findViewById<TextView>(R.id.contactTextView)
+            Text(getSocialMedias())
+                .font(.subheadline)
+                .padding()
 
-        descriptionTextView.text = getDescription()
-        contactTextView.text = getSocialMedias()
+            Spacer()
+        }
+        .padding()
+        .navigationTitle("Denidu Info")
     }
 
-    private fun getDescription(): String {
-        val stringBuilder = StringBuilder()
-        stringBuilder.append("---deniduu---\n")
-        variables.values.forEachIndexed { index, value ->
-            when (index) {
-                0 -> stringBuilder.append("Name: $value\n")
-                1 -> stringBuilder.append("Age: $value\n")
+    private func getDescription() -> String {
+        var description = "---deniduu---\n"
+        for (index, value) in variables.values.enumerated() {
+            switch index {
+            case 0:
+                description += "Name: \(value)\n"
+            case 1:
+                description += "Age: \(value)\n"
+            default:
+                break
             }
         }
-        return stringBuilder.toString()
+        return description
     }
 
-    private fun getSocialMedias(): String {
-        val stringBuilder = StringBuilder()
-        stringBuilder.append("\n-----contact-----\n")
-        platforms.forEach { (key, value) ->
-            stringBuilder.append("$key: $value\n")
+    private func getSocialMedias() -> String {
+        var contact = "\n-----contact-----\n"
+        for (key, value) in platforms {
+            contact += "\(key): \(value)\n"
         }
-        return stringBuilder.toString()
+        return contact
+    }
+}
+
+struct ContentView: View {
+    var body: some View {
+        NavigationView {
+            DeniduView()
+        }
+    }
+}
+
+@main
+struct MyApp: App {
+    var body: some Scene {
+        WindowGroup {
+            ContentView()
+        }
     }
 }
 
