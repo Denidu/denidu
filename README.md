@@ -8,7 +8,7 @@ struct DeniduView: View {
 
     private let variables = [
         "name": "Denidu Thiranjaya Gamage",
-        "age": 23
+        "age": 25
     ] as [String: Any]
     
     private let platforms = [
